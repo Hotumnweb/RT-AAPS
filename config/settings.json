@@ -1,0 +1,19 @@
+{
+    "ollama": {
+        "model": "qwen2.5:1.5b",
+        "base_url": "http://127.0.0.1:11434",
+        "timeout": 60
+    },
+    "system": {
+        "cmd_timeout": 300,
+        "auto_confirm": false,
+        "local_ip": "auto",
+        "msf_listen_port": 4444
+    },
+    "paths": {
+        "wordlists": "/usr/share/wordlists",
+        "scripts_dir": "scripts",
+        "exploit_db": "db/exploit_db.json",
+        "tool_db": "db/tool_db.json"
+    }
+}

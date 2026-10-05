@@ -1,0 +1,62 @@
+{
+    "nmap_host_scan": {
+        "name": "nmap 存活主机扫描",
+        "tool": "nmap",
+        "keywords": ["存活主机", "主机发现", "网段扫描", "存活扫描", "扫网段"],
+        "cmd_template": "nmap -sn -PR -T4 -n {target}"
+    },
+    "nmap_port_scan": {
+        "name": "nmap 端口+服务扫描",
+        "tool": "nmap",
+        "keywords": ["端口", "开放端口", "服务版本", "端口扫描", "扫端口"],
+        "cmd_template": "nmap -sV -sC -T4 -n -p- --open {target}"
+    },
+    "gobuster_dir": {
+        "name": "gobuster 目录爆破",
+        "tool": "gobuster",
+        "keywords": ["目录", "目录爆破", "web目录", "路径爆破", "爆破目录"],
+        "cmd_template": "gobuster dir -u http://{target} -w /usr/share/wordlists/dirb/common.txt -q -e -k --timeout 5s"
+    },
+    "nikto_web": {
+        "name": "nikto Web漏洞扫描",
+        "tool": "nikto",
+        "keywords": ["web漏洞", "网站漏洞", "web扫描"],
+        "cmd_template": "nikto -h {target} -Tuning 123 -nointeractive"
+    },
+    "hydra_ssh": {
+        "name": "hydra SSH 爆破",
+        "tool": "hydra",
+        "keywords": ["ssh爆破", "爆破ssh", "ssh弱口令"],
+        "cmd_template": "hydra -L /usr/share/wordlists/metasploit/unix_users.txt -P /usr/share/wordlists/metasploit/unix_passwords.txt ssh://{target} -t 4 -o /tmp/hydra_ssh.txt"
+    },
+    "masscan_scan": {
+        "name": "masscan 全端口扫描",
+        "tool": "masscan",
+        "keywords": ["全端口", "快速端口", "masscan"],
+        "cmd_template": "masscan {target} -p1-65535 --rate 1000 --open-only"
+    },
+    "dig_dns": {
+        "name": "dig DNS 查询",
+        "tool": "dig",
+        "keywords": ["dns", "域名解析", "解析记录"],
+        "cmd_template": "dig {target} any +short"
+    },
+    "curl_web": {
+        "name": "curl Web 请求",
+        "tool": "curl",
+        "keywords": ["请求", "访问页面", "页面内容"],
+        "cmd_template": "curl -s -I -m 10 http://{target}"
+    },
+    "smbclient_enum": {
+        "name": "smbclient 共享枚举",
+        "tool": "smbclient",
+        "keywords": ["smb共享", "共享目录", "枚举共享"],
+        "cmd_template": "smbclient -L //{target} -N"
+    },
+    "proxychains_route": {
+        "name": "proxychains 代理调用",
+        "tool": "proxychains",
+        "keywords": ["代理执行", "内网工具", "走代理"],
+        "cmd_template": "proxychains4 nmap -sT -Pn -T4 {target}"
+    }
+}
